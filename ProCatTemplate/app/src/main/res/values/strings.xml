@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ProCatTemplate</string>
+    <string name="catalogButtonText">Каталог\nинструментов</string>
+</resources>
