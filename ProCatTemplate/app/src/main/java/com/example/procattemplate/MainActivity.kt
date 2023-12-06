@@ -152,7 +152,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun runApi(url: String) {
-        ApiCalls.shared.runApi(url)
+        //ApiCalls.shared.runApi(url)
+        //PostApi.shared.rawJSON()
+        ApiCalls.shared.postApi("http://dummy.restapiexample.com")
     }
 
     private fun runApi1(url: String) {

@@ -63,7 +63,6 @@ fun SampleComposableWithReceiver(name: String, modifier: Modifier) {
 
                         } else {
                             // There are no extras
-
                         }
                         Log.i(
                             identifier,
