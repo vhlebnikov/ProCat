@@ -152,14 +152,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun runApi(url: String) {
-        //ApiCalls.shared.runApi(url)
+        ApiCalls.shared.runApi(url)
         //PostApi.shared.rawJSON()
-        ApiCalls.shared.postApi("http://dummy.restapiexample.com")
+        //ApiCalls.shared.postApi("http://dummy.restapiexample.com")
     }
 
     private fun runApi1(url: String) {
-        //val apiCalls = ApiCalls()
-        //createToast("Response: " + apiCalls.runApi(url))
         DataCoordinator.shared.sampleAPI(
             url = url,
             onSuccess = {createToast("DataCoordinator.shared.")},

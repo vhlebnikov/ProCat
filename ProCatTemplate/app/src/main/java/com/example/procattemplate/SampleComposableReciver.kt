@@ -45,10 +45,10 @@ fun SampleComposableWithReceiver(name: String, modifier: Modifier) {
 
                 val action = intent?.action ?: return
                 when (action) {
-                    SystemNotifications.myIntent -> {
+                    SystemNotifications.gotUserDataIntent -> {
                         Log.i(
                             identifier,
-                            " sampleIntent."
+                            "got Intent"
                         )
                         // Check for Extras
                         val extras = intent.extras
@@ -77,7 +77,7 @@ fun SampleComposableWithReceiver(name: String, modifier: Modifier) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 context.registerReceiver(
                     broadCast,
-                    IntentFilter(SystemNotifications.myIntent),
+                    IntentFilter(SystemNotifications.gotUserDataIntent),
                     RECEIVER_NOT_EXPORTED
                 )
             }

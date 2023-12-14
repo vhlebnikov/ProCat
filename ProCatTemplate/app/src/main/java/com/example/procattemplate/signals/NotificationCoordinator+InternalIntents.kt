@@ -2,9 +2,9 @@ package com.example.procattemplate.signals
 
 import android.content.Intent
 
-fun NotificationCoordinator.sendSampleIntent(extra: String) {
+fun NotificationCoordinator.sendIntent(intentToSend: String, extra: String) {
     // Curate Notification
-    val intent = Intent(SystemNotifications.myIntent)
+    val intent = Intent(intentToSend)
     // Add data (Extras)
     intent.putExtra(
         SystemNotificationsExtras.myExtra,

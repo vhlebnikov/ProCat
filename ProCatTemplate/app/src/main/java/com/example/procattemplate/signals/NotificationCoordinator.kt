@@ -4,7 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 
-
+/**
+ * К этому статическому классу обращаемся для отправки сигнала.
+ * Вызываем метод sendNotification(intent)
+ * intent - параметр
+ */
 class NotificationCoordinator {
     // MARK: Variables
     companion object {

@@ -1,7 +1,8 @@
 package com.example.procattemplate.data_storage
 
 import com.example.procattemplate.signals.NotificationCoordinator
-import com.example.procattemplate.signals.sendSampleIntent
+import com.example.procattemplate.signals.SystemNotifications
+import com.example.procattemplate.signals.sendIntent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -15,7 +16,7 @@ fun DataCoordinator.updateUserEmail(value: String) {
         // Update DataStore
         setUserEmailDataStore(value)
         // OPTIONAL - Send Broadcast
-        NotificationCoordinator.shared.sendSampleIntent("data updated")
+        NotificationCoordinator.shared.sendIntent(SystemNotifications.gotUserDataIntent, "data updated")
         // Not included in this tutorial - consult the ReadMe to learn how to setup notifications to alert your system.
     }
 }
