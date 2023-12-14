@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.TopAppBar
@@ -32,7 +31,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.procattemplate.api.ApiCalls
 import com.example.procattemplate.data_storage.DataCoordinator
-import com.example.procattemplate.signals.NotificationCoordinator
+import com.example.procattemplate.intents.NotificationCoordinator
+import com.example.procattemplate.intents.SystemNotifications
+import com.example.procattemplate.intents.sendIntent
 
 
 class MainActivity : AppCompatActivity() {
@@ -120,9 +121,13 @@ class MainActivity : AppCompatActivity() {
                 Button(onClick = {runApi("https://randomuser.me/")}, colors = ButtonDefaults.buttonColors(containerColor = Color.LightGray, contentColor = Color.Black)) {
                     Text(text = "Api call", fontSize = 24.sp)
                 }
+                Button(onClick = { NotificationCoordinator.shared.sendIntent(SystemNotifications.myTestIntent) }) {
+                    Text(text = "Test intent", fontSize = 24.sp)
+                }
 
-                SampleComposableWithReceiver(name = "Hello", modifier = Modifier.defaultMinSize())
-
+                //SampleComposableWithReceiver(name = "Hello", modifier = Modifier.defaultMinSize())
+                //MyComposableWithReceiver(intentToReact = SystemNotifications.myTestIntent)
+                CustomComposeTextWithReceiver()
 
             }
     }

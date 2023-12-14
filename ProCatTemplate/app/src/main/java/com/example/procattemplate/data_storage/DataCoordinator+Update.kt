@@ -1,8 +1,8 @@
 package com.example.procattemplate.data_storage
 
-import com.example.procattemplate.signals.NotificationCoordinator
-import com.example.procattemplate.signals.SystemNotifications
-import com.example.procattemplate.signals.sendIntent
+import com.example.procattemplate.intents.NotificationCoordinator
+import com.example.procattemplate.intents.SystemNotifications
+import com.example.procattemplate.intents.sendIntent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

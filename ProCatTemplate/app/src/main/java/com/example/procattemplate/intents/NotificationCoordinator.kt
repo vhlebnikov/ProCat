@@ -1,4 +1,4 @@
-package com.example.procattemplate.signals;
+package com.example.procattemplate.intents;
 
 import android.content.Context
 import android.content.Intent
