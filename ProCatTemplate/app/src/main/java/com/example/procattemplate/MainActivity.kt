@@ -152,8 +152,6 @@ class MainActivity : AppCompatActivity() {
     private fun createToast(body: String?) {
         val myToast = Toast.makeText(this, body, Toast.LENGTH_SHORT)
         myToast.show()
-
-
     }
 
     private fun runApi(url: String) {
@@ -162,12 +160,6 @@ class MainActivity : AppCompatActivity() {
         //ApiCalls.shared.postApi("http://dummy.restapiexample.com")
     }
 
-    private fun runApi1(url: String) {
-        DataCoordinator.shared.sampleAPI(
-            url = url,
-            onSuccess = {createToast("DataCoordinator.shared.")},
-            onError = {}
-        )
-    }
+
 
 }
