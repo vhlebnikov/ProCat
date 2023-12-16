@@ -39,13 +39,11 @@ import com.example.procattemplate.intents.sendIntent
 class MainActivity : AppCompatActivity() {
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         initMainPageCompose()
         initBackground()
-        //mainPageInit()
 
     }
 
@@ -64,7 +62,6 @@ class MainActivity : AppCompatActivity() {
     private fun secondPageInit() {
         setContentView(R.layout.right_menu)
         super.findViewById<Button>(R.id.backButton).setOnClickListener {
-            //mainPageInit()
             initMainPageCompose()
         }
     }
@@ -74,8 +71,9 @@ class MainActivity : AppCompatActivity() {
 
         setContent {
             MyHeader()
-            MyText()
+            TestButtons()
         }
+
     }
 
 
@@ -94,7 +92,7 @@ class MainActivity : AppCompatActivity() {
 
 
     @Composable
-    private fun MyText() {
+    private fun TestButtons() {
 
             Column (
                 modifier = Modifier.fillMaxSize(),
@@ -125,28 +123,9 @@ class MainActivity : AppCompatActivity() {
                     Text(text = "Test intent", fontSize = 24.sp)
                 }
 
-                //SampleComposableWithReceiver(name = "Hello", modifier = Modifier.defaultMinSize())
-                //MyComposableWithReceiver(intentToReact = SystemNotifications.myTestIntent)
                 CustomComposeTextWithReceiver()
 
             }
-    }
-
-    private fun mainPageInit() {
-        setContentView(R.layout.activity_main)
-
-
-
-        super.findViewById<Button>(R.id.catalogButton).setOnClickListener {
-            createToast("Hello toast!")
-        }
-
-        super.findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.rightMenuButton).setOnClickListener {
-            //secondPageInit()
-
-            runApi("https://randomuser.me/")
-
-        }
     }
 
     private fun createToast(body: String?) {

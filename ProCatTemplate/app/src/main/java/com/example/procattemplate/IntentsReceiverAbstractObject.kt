@@ -21,9 +21,9 @@ import com.example.procattemplate.intents.SystemNotificationsExtras
  *         }
  *     }
  *
- *     receiver.CreateReceiver(intentToReact = SystemNotifications.SIGNAL_NAME)
+ *     receiver.CreateReceiver(intentToReact = SystemNotifications.<SIGNAL_NAME>)
  *
- *    SIGNAL_NAME - имя сигнала, на который реагируем.
+ *    <SIGNAL_NAME> - имя сигнала, на который реагируем.
  *    Его предварительно нужно описать по образцу в файле SystemNotifications в папке intents
  */
 abstract class IntentsReceiverAbstractObject {
