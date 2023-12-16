@@ -5,9 +5,10 @@ import android.content.Intent
 import android.util.Log
 
 /**
- * К этому статическому классу обращаемся для отправки сигнала.
- * Вызываем метод sendNotification(intent)
- * intent - параметр
+ * К этому статическому классу обращаемся для создания сигналов.
+ * Метод sendIntent() описан в файле NotificationCoordinator+InternalIntents.kt
+ * Методы из этого файла трогать не нужно. (не получилось сделать их приватными)
+ * PS: метод initialize() конечно всё таки придётся вызвать на этапе запуска приложения.
  */
 class NotificationCoordinator {
     // MARK: Variables

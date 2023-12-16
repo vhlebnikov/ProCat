@@ -17,13 +17,13 @@ suspend fun DataCoordinator.setUserEmailDataStore(value: String) {
     val context = this.context ?: return
     Log.i(
         identifier,
-        "user email 1: $userEmailPreferenceVariable"
+        "user email old: $userEmailPreferenceVariable"
     )
     context.dataStore.edit { preferences ->
         preferences[PreferencesKeys.userEmail] = value
         Log.i(
             identifier,
-            "user email 2: $userEmailPreferenceVariable"
+            "user email new: $userEmailPreferenceVariable"
         )
     }
 }

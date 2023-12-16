@@ -2,12 +2,16 @@ package com.example.procattemplate.data_storage
 
 import com.example.procattemplate.intents.NotificationCoordinator
 import com.example.procattemplate.intents.SystemNotifications
+import com.example.procattemplate.intents.SystemNotificationsExtras
 import com.example.procattemplate.intents.sendIntent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 // MARK: DataStore Update Functionality
+/**
+ * Методы для обновления данных  долговременной памяти.
+ */
 fun DataCoordinator.updateUserEmail(value: String) {
     // Update Value
     this.userEmailPreferenceVariable = value
@@ -16,8 +20,7 @@ fun DataCoordinator.updateUserEmail(value: String) {
         // Update DataStore
         setUserEmailDataStore(value)
         // OPTIONAL - Send Broadcast
-        NotificationCoordinator.shared.sendIntent(SystemNotifications.gotUserDataIntent, "data updated")
-        // Not included in this tutorial - consult the ReadMe to learn how to setup notifications to alert your system.
+        NotificationCoordinator.shared.sendIntent(SystemNotifications.gotUserDataIntent, SystemNotificationsExtras.myExtra, "data updated")
     }
 }
 
@@ -31,8 +34,7 @@ fun DataCoordinator.updateUserPhone(value: String) {
         setUserPhoneDataStore(value)
         // OPTIONAL - Send Broadcast
 
-        // Not included in this tutorial - consult the ReadMe to learn how to setup notifications to alert your system.
-    }
+        }
 }
 
 fun DataCoordinator.updateSampleInt(value: Int) {

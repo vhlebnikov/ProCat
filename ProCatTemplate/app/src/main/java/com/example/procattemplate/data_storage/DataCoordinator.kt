@@ -9,7 +9,18 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-
+/**
+ * Класс для работы с долговременной памятью.
+ * Получаем данные вот так:
+ *          DataCoordinator.shared.userEmailPreferenceVariable
+ * Обновляем данные в файле DataCoordinator+Update.kt
+ *
+ * Добавляем функционал для работы с новыми данными:
+ *      Очень тяжело и во всех файликах надо правки вносить.
+ *      Если сильно хочется, то можно по образцу попробовать.
+ *      Можно мне написать, я умею, я сделаю.
+ *      Постараюсь оптимизировать этот процесс, но думаю, что это будет не скоро.
+ */
 class DataCoordinator {
     companion object {
         val shared = DataCoordinator()

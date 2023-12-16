@@ -2,26 +2,45 @@ package com.example.procattemplate.intents
 
 import android.content.Intent
 
-fun NotificationCoordinator.sendIntent(intentToSend: String, extra: String) {
-    // Curate Notification
+/**
+ * Тут представлены два варианта перегруженной функции sendIntent,
+ * которая создаёт и отправляет сигнал.
+ *
+ * Первый вариант - сигнал с дополнительной информацией
+ * @param intentToSend - имя сигнала. Имена объявлены в объекте SystemNotifications.
+ * @param extraName - имя доп информации. Имена бъявлены в объекте SystemNotificationsExtras.
+ * @param extraValue - строка, содержащая произвольную доп информацию, которую хотим передать.
+ */
+fun NotificationCoordinator.sendIntent(intentToSend: String, extraName: String, extraValue: String) {
+    // Create Notification
     val intent = Intent(intentToSend)
     // Add data (Extras)
     intent.putExtra(
-        SystemNotificationsExtras.myExtra,
-        extra
+        extraName,
+        extraValue
     )
-    // Set the package
-    intent.setPackage("com.example.procattemplate")
-    // Send Notification - This is found in the declaration file
-    sendNotification(intent)
+
+    realiseIntent(intent)
 }
 
+/**
+ * Второй вариант простой, без доп информации.
+ * @param intentToSend - В параметрах только имя сигнала в формате SystemNotifications.<SIGNAL_NAME>
+ */
 fun NotificationCoordinator.sendIntent(intentToSend: String) {
-    // Curate Notification
+    // Create Notification
     val intent = Intent(intentToSend)
-    // Add data (Extras)
+
+    realiseIntent(intent)
+}
+
+/**
+ * Собственно отправка сигнала
+ * Вынес в отдельный метод для переиспользования кода.
+ */
+private fun realiseIntent(intent: Intent) {
     // Set the package
     intent.setPackage("com.example.procattemplate")
     // Send Notification - This is found in the declaration file
-    sendNotification(intent)
+    NotificationCoordinator.shared.sendNotification(intent)
 }

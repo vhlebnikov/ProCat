@@ -11,6 +11,12 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
+/**
+ * Тут из полезного пока только runApi() - делает GET запрос по указанному url, пишет результат
+ *          в память в user email.
+ * Есть ещё postApi() - шлёт данные по указанному url, но пока не понятно, работает ли оно вообще.
+ * Короче над Api ещё много работы.
+ */
 class ApiCalls {
     companion object {
         val shared = ApiCalls()
