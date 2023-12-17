@@ -7,4 +7,12 @@
     <string name="wrong_password">Неправильный пароль</string>
     <string name="enter_phone_number">Введите номер телефона</string>
     <string name="wrong_phone_number">Неправильный номер телефона</string>
+
+    <string name="hammer">Молоток</string>
+    <string name="tool">Инструмент</string>
+    <string name="toolDescription">Описание</string>
+    <string name="toolSpecifications">Характеристики</string>
+    <string name="addToCart">Добавить в корзину</string>
+    <string name="addedToCart">Добавлено в корзину</string>
+
 </resources>
