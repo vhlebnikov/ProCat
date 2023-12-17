@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.procatfirst.R
 import androidx.lifecycle.viewmodel.compose.viewModel
+
 import com.example.procatfirst.ui.theme.md_theme_light_scrim
 import com.example.procatfirst.ui.theme.md_theme_light_tertiary
 
@@ -79,7 +80,9 @@ fun AuthScreen(
         }
 
         OutlinedButton(
+
             onClick = { authViewModel.forgotPassword() },
+
             modifier = Modifier.fillMaxWidth().padding(16.dp)
         ) {
             Text(
@@ -89,7 +92,6 @@ fun AuthScreen(
         }
 
     }
-
 
 }
 
