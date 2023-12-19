@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.procatfirst.ui.auth.AuthScreen
 import com.example.procatfirst.ui.item.ToolScreen
+import com.example.procatfirst.ui.start.StartScreen
 import com.example.procatfirst.ui.theme.ProCatFirstTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,8 +21,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    //AuthScreen()
-                    ToolScreen()
+                    ProCatApp()
                 }
             }
         }

@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">ProCat</string>
+    <string name="welcome">Добро пожаловать в ProCat!</string>
+    <string name="logo">Логотип</string>
+
+
+    <string name="back_button">Назад</string>
+    <string name="next">Далее</string>
+
+    <string name="auth">Авторизация</string>
     <string name="sign_in_intro">Вход</string>
     <string name="sign_in">Войти</string>
     <string name="forgot_password">Забыл пароль</string>
@@ -14,5 +22,9 @@
     <string name="toolSpecifications">Характеристики</string>
     <string name="addToCart">Добавить в корзину</string>
     <string name="addedToCart">Добавлено в корзину</string>
+
+    <string name="tools">Инструменты</string>
+
+    <string name="test">Тест</string>
 
 </resources>

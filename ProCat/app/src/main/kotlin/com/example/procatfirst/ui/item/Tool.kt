@@ -35,8 +35,10 @@ import com.example.procatfirst.ui.theme.md_theme_light_onSurfaceVariant
 
 @Composable
 fun ToolScreen(
-    toolViewModel: ToolViewModel = viewModel()
-) {
+    toolViewModel: ToolViewModel = viewModel(),
+    onNextButtonClicked: () -> Unit,
+    modifier: Modifier = Modifier
+    ) {
     val toolUiState by toolViewModel.uiState.collectAsState()
 
     Column(
@@ -83,6 +85,13 @@ fun ToolScreen(
             addToCart = { toolViewModel.addToCart() },
             toolUiState.addedToCart
         )
+
+        Button(
+            onClick = { onNextButtonClicked() },
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        ) {
+            Text(stringResource(R.string.next))
+        }
 
     }
 
@@ -148,6 +157,6 @@ fun SmallTopAppBarTool(
 @Composable
 fun ToolPreview() {
     ProCatFirstTheme {
-        ToolScreen()
+        //ToolScreen()
     }
 }
