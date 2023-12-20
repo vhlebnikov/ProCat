@@ -8,5 +8,6 @@ object SystemNotifications {
 
     const val gotUserDataIntent = "got-user-data"
     const val myTestIntent = "test-intent"
+    const val delInCartIntent = "del-in-cart-intent"
 
 }

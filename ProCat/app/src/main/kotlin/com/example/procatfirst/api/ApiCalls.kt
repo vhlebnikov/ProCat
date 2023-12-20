@@ -1,7 +1,7 @@
 package com.example.procatfirst.api
 
 import com.example.procatfirst.data_storage.DataCoordinator
-import com.example.procattemplate.data_storage.updateUserEmail
+import com.example.procatfirst.data_storage.updateUserEmail
 import okhttp3.FormBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody

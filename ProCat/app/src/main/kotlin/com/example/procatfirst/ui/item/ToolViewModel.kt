@@ -2,6 +2,8 @@ package com.example.procatfirst.ui.item
 
 import androidx.lifecycle.ViewModel
 import com.example.procatfirst.data.ToolDataProvider
+import com.example.procatfirst.data_storage.DataCoordinator
+import com.example.procatfirst.data_storage.updateAddToolsInCart
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -30,6 +32,8 @@ class ToolViewModel: ViewModel() {
                 amount = newAmount
             )
         }
+        DataCoordinator.shared.updateAddToolsInCart(_uiState.value.tool)
+        //_uiState.value.tool
     }
 
 }

@@ -1,8 +1,8 @@
-package com.example.procattemplate.data_storage
+package com.example.procatfirst.data_storage
 
 import android.util.Log
 import androidx.datastore.preferences.core.edit
-import com.example.procatfirst.data_storage.DataCoordinator
+import com.example.procatfirst.data.Tool
 import com.example.procatfirst.data_storage.DataCoordinator.Companion.identifier
 import kotlinx.coroutines.flow.firstOrNull
 
@@ -94,4 +94,44 @@ suspend fun DataCoordinator.setSampleBooleanDataStore(value: Boolean) {
             "ok"
         )
     }
+
+suspend fun DataCoordinator.getToolsInCartDataStore(): List<Tool> {
+    val context = this.context ?: return defaultToolsInCartPreferenceVariable
+    val rowTools = context.dataStore.data.firstOrNull()?.get(PreferencesKeys.toolsInCart)
+        ?: defaultToolsInCartPreferenceVariable
+    val tools: MutableList<String> = emptyList<String>().toMutableList()
+    for (i : Any in rowTools) {
+        tools.add(i.toString())
+    }
+    val readyTools: MutableList<Tool> = emptyList<Tool>().toMutableList()
+    for (i: Int in 0..<tools.size step 5) {
+        val tool = Tool(tools[i].toInt(),
+            tools[i+1], tools[i+2].toInt(), tools[i+3], tools[i+4]
+        )
+        readyTools.add(tool)
+    }
+    return readyTools
+}
+
+suspend fun DataCoordinator.addToolInCartDataStore(value: Tool) {
+    val context = this.context ?: return
+    Log.i(
+        identifier,
+        "tools old: $toolsInCartPreferenceVariable"
+    )
+    val list = setOf<String>().toMutableSet()
+    list.add(value.id.toString())
+    list.add(value.name)
+    list.add(value.imageResId.toString())
+    list.add(value.description)
+    list.add(value.specifications)
+    context.dataStore.edit { preferences ->
+        preferences[PreferencesKeys.toolsInCart] = list
+        Log.i(
+            identifier,
+            "tools new: $toolsInCartPreferenceVariable"
+        )
+    }
+}
+
 }

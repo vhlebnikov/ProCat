@@ -1,6 +1,6 @@
-package com.example.procattemplate.data_storage
+package com.example.procatfirst.data_storage
 
-import com.example.procatfirst.data_storage.DataCoordinator
+import com.example.procatfirst.data.Tool
 import com.example.procatfirst.intents.NotificationCoordinator
 import com.example.procatfirst.intents.SystemNotifications
 import com.example.procatfirst.intents.SystemNotificationsExtras
@@ -59,5 +59,30 @@ fun DataCoordinator.updateSampleBoolean(value: Boolean) {
         setSampleBooleanDataStore(value)
         // OPTIONAL - Send Broadcast
         // Not included in this tutorial - consult the ReadMe to learn how to setup notifications to alert your system.
+    }
+}
+
+fun DataCoordinator.updateAddToolsInCart(value: Tool) {
+    // Update Value
+    this.toolsInCartPreferenceVariable.add(value)
+    // Save to System
+    GlobalScope.launch(Dispatchers.Default) {
+        // Update DataStore
+        addToolInCartDataStore(value)
+        // OPTIONAL - Send Broadcast
+        //NotificationCoordinator.shared.sendIntent(SystemNotifications.gotUserDataIntent, SystemNotificationsExtras.myExtra, "data updated")
+    }
+}
+
+fun DataCoordinator.updateRemoveToolsInCart(value: Tool) {
+    // Update Value
+    //this.toolsInCartPreferenceVariable.remove(value)
+    toolsInCartPreferenceVariable = defaultToolsInCartPreferenceVariable
+    // Save to System
+    GlobalScope.launch(Dispatchers.Default) {
+        // Update DataStore
+        removeToolInCartDataStore(value)
+        // OPTIONAL - Send Broadcast
+        NotificationCoordinator.shared.sendIntent(SystemNotifications.delInCartIntent)
     }
 }

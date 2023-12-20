@@ -28,6 +28,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.procatfirst.ui.auth.AuthScreen
 
 import com.example.procatfirst.ui.auth.AuthViewModel
+import com.example.procatfirst.ui.cart.Cart
 import com.example.procatfirst.ui.item.ToolScreen
 import com.example.procatfirst.ui.item.ToolViewModel
 import com.example.procatfirst.ui.start.StartScreen
@@ -39,6 +40,7 @@ enum class ProCatScreen(@StringRes val title: Int) {
     Tool(title = R.string.tool),
     Tools(title = R.string.tools),
     Misha(title = R.string.test),
+    Cart(title = R.string.cart),
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -126,6 +128,16 @@ fun ProCatApp (
             }
             composable(route = ProCatScreen.Misha.name) {
                 TestButtons(
+                    onNextButtonClicked = {
+                        navController.navigate(ProCatScreen.Cart.name)
+                    },
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp)
+                )
+            }
+            composable(route = ProCatScreen.Cart.name) {
+                Cart(
                     onNextButtonClicked = {
                         navController.navigate(ProCatScreen.Start.name)
                     },
