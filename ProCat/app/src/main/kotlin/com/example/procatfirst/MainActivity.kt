@@ -12,9 +12,13 @@ import com.example.procatfirst.ui.item.ToolScreen
 import com.example.procatfirst.ui.start.StartScreen
 import com.example.procatfirst.ui.theme.ProCatFirstTheme
 
+import com.example.procatfirst.data_storage.DataCoordinator
+import com.example.procatfirst.intents.NotificationCoordinator
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initBackground()
         setContent {
             ProCatFirstTheme {
                 Surface(
@@ -26,5 +30,17 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    private fun initBackground() {
+        NotificationCoordinator.shared.initialize(baseContext)
+
+        DataCoordinator.shared.initialize(
+            context = baseContext,
+            onLoad = {
+                //DataCoordinator.shared.updateUserEmail(DataCoordinator.shared.defaultUserEmailPreferenceValue)
+            }
+        )
+    }
+    
 }
 
