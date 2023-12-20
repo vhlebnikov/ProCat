@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -36,7 +37,9 @@ import com.example.procatfirst.ui.theme.md_theme_light_tertiary
 
 @Composable
 fun AuthScreen(
-    authViewModel: AuthViewModel = viewModel()
+    onNextButtonClicked: () -> Unit,
+    authViewModel: AuthViewModel = viewModel(),
+    modifier: Modifier = Modifier
 ) {
     val authUiState by authViewModel.uiState.collectAsState()
 
@@ -91,6 +94,12 @@ fun AuthScreen(
             )
         }
 
+        Button(
+            onClick = { onNextButtonClicked() },
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        ) {
+            Text(stringResource(R.string.next))
+        }
     }
 
 }
@@ -173,6 +182,6 @@ fun inputField(
 @Composable
 fun AuthPreview() {
     ProCatFirstTheme {
-        AuthScreen()
+        //AuthScreen()
     }
 }

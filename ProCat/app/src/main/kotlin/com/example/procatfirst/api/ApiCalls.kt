@@ -1,7 +1,11 @@
 package com.example.procatfirst.api
 
 import com.example.procatfirst.data_storage.DataCoordinator
-import com.example.procattemplate.data_storage.updateUserEmail
+import com.example.procatfirst.data_storage.LocalStorage
+import com.example.procatfirst.data_storage.updateUserEmail
+import com.example.procatfirst.intents.NotificationCoordinator
+import com.example.procatfirst.intents.SystemNotifications
+import com.example.procatfirst.intents.sendIntent
 import okhttp3.FormBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -20,7 +24,37 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 class ApiCalls {
     companion object {
         val shared = ApiCalls()
+        const val BACKEND_URL = "http://localhost:8080"
         const val identifier = "[ApiCalls]"
+    }
+
+    fun getItems() {
+        val url = BACKEND_URL
+        val service = Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+            .create(UserService::class.java)
+
+        service.getItems().enqueue(object : Callback<ItemsResponse> {
+
+            /* The HTTP call failed. This method is run on the main thread */
+            override fun onFailure(call: Call<ItemsResponse>, t: Throwable) {
+                t.printStackTrace()
+                //!!!! error intent
+                NotificationCoordinator.shared.sendIntent(SystemNotifications.stuffAddedIntent)
+                //DataCoordinator.shared.updateUserEmail("ERROR 404")
+            }
+
+            /* The HTTP call was successful, we should still check status code and response body
+             * on a production app. This method is run on the main thread */
+            override fun onResponse(call: Call<ItemsResponse>, response: Response<ItemsResponse>) {
+                /* This will print the response of the network call to the Logcat */
+                response.body()?.let { LocalStorage.shared.addStuff(it.results) }
+                //~~~~~~~~~~~//DataCoordinator.shared.updateUserEmail(response.body().toString())
+            }
+
+        })
     }
 
     public fun runApi(url: String)  {

@@ -2,15 +2,14 @@ package com.example.procatfirst.data_storage
 
 import android.content.Context
 import android.util.Log
+import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
-import com.example.procattemplate.data_storage.getSampleBooleanDataStore
-import com.example.procattemplate.data_storage.getSampleIntDataStore
-import com.example.procattemplate.data_storage.getUserEmailDataStore
-import com.example.procattemplate.data_storage.getUserPhoneDataStore
+import com.example.procatfirst.data.Tool
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
 /**
@@ -47,6 +46,9 @@ class DataCoordinator {
     var sampleBooleanPreferenceVariable:  Boolean = false
     val defaultSampleBooleanPreferenceVariable: Boolean = false
 
+    var toolsInCartPreferenceVariable: MutableList<Tool> = listOf<Tool>().toMutableList()
+    val defaultToolsInCartPreferenceVariable: MutableList<Tool> = listOf<Tool>().toMutableList()
+
     // MARK: Data Store Variables
     private val USER_PREFERENCES_NAME = "user_preferences"
     val Context.dataStore by preferencesDataStore(
@@ -71,14 +73,77 @@ class DataCoordinator {
             sampleIntPreferenceVariable = getSampleIntDataStore()
             // Update Sample Boolean
             sampleBooleanPreferenceVariable = getSampleBooleanDataStore()
+
+            toolsInCartPreferenceVariable = getToolsInCartDataStore()
             // Log the variables to confirm that they loaded correctly
             Log.i(
                 identifier,
                 "init: $userEmailPreferenceVariable | $sampleIntPreferenceVariable | $sampleBooleanPreferenceVariable"
 
             )
-            // Callback
             onLoad()
         }
     }
+
+    private suspend fun getToolsInCartDataStore(): MutableList<Tool> {
+        val context = this.context ?: return defaultToolsInCartPreferenceVariable
+        val rowTools = context.dataStore.data.firstOrNull()?.get(PreferencesKeys.toolsInCart)
+            ?: defaultToolsInCartPreferenceVariable
+        val tools: MutableList<String> = emptyList<String>().toMutableList()
+        for (i : Any in rowTools) {
+            tools.add(i.toString())
+        }
+        val readyTools: MutableList<Tool> = emptyList<Tool>().toMutableList()
+        for (i: Int in 0..<tools.size step 6) {
+            val tool = Tool(tools[i].toInt(),
+                tools[i+1], tools[i+2].toInt(), tools[i+3], tools[i+4], tools[i+5].toInt()
+            )
+            readyTools.add(tool)
+        }
+        return readyTools
+    }
+
+    suspend fun addToolInCartDataStore(value: Tool) {
+        val context = this.context ?: return
+        Log.i(
+            identifier,
+            "tools old: $toolsInCartPreferenceVariable"
+        )
+        val list =  setOf<String>().toMutableSet()
+        list.add(value.id.toString())
+        list.add(value.name)
+        list.add(value.imageResId.toString())
+        list.add(value.description)
+        list.add(value.specifications)
+        list.add(value.price.toString())
+        context.dataStore.edit { preferences ->
+
+            preferences[PreferencesKeys.toolsInCart] = list
+            Log.i(
+                identifier,
+                "tools new: $toolsInCartPreferenceVariable"
+            )
+        }
+    }
+
+    suspend fun removeToolInCartDataStore(value: Tool) {
+        val context = this.context ?: return
+        Log.i(
+            identifier,
+            "tools old: $toolsInCartPreferenceVariable"
+        )
+        //val list = shared.toolsInCartPreferenceVariable
+
+
+        //list.remove(value)
+        val list = setOf<String>().toMutableSet()
+        context.dataStore.edit { preferences ->
+            preferences[PreferencesKeys.toolsInCart] = list
+            Log.i(
+                identifier,
+                "tools new: $toolsInCartPreferenceVariable"
+            )
+        }
+    }
+
 }
