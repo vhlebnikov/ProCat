@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.TopAppBar
@@ -82,7 +83,7 @@ import com.example.procatfirst.ui.theme.ProCatFirstTheme
     ) {
 
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().padding(16.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -112,6 +113,8 @@ import com.example.procatfirst.ui.theme.ProCatFirstTheme
             ) {
                 Text(text = "Api call", fontSize = 24.sp)
             }
+            Spacer(modifier = Modifier.height(8.dp))
+
             Button(onClick = { NotificationCoordinator.shared.sendIntent(SystemNotifications.myTestIntent) }) {
                 Text(text = "Test intent", fontSize = 24.sp)
             }

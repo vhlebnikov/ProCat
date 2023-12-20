@@ -4,8 +4,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
@@ -67,6 +69,7 @@ fun ToolScreen(
             style = MaterialTheme.typography.bodySmall
         )
         Divider(thickness = 1.dp, color = md_theme_light_onSurfaceVariant)
+        Spacer(modifier = Modifier.height(10.dp))
 
         Text(
             text = stringResource(R.string.toolDescription),
@@ -76,6 +79,7 @@ fun ToolScreen(
             text = toolUiState.tool.description,
             style = MaterialTheme.typography.bodyMedium
         )
+        Spacer(modifier = Modifier.height(5.dp))
         Text(
             text = stringResource(R.string.toolSpecifications),
             style = MaterialTheme.typography.titleMedium
@@ -92,7 +96,7 @@ fun ToolScreen(
 
         Button(
             onClick = { onNextButtonClicked() },
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text(stringResource(R.string.next))
         }

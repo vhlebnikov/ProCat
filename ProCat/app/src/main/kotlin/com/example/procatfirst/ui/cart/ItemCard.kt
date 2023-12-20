@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
@@ -66,19 +67,17 @@ fun ToolCardCart(
             .clip(MaterialTheme.shapes.small)
             .background(MaterialTheme.colorScheme.background)
             .clickable { /* Handle click on the card if needed */ }
+            .padding(16.dp)
     ) {
+        Row(
+            modifier = Modifier
+                .padding(8.dp)
+        ) {
             Column(
                 modifier = Modifier
                     .padding(6.dp)
+                    .weight(3f) // Adjust the weight for text content
             ) {
-                Image(
-                    painter = painterResource(id = tool.imageResId),
-                    contentDescription = tool.name,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp)
-                        .clip(MaterialTheme.shapes.medium)
-                )
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
                     text = tool.name,
@@ -101,5 +100,25 @@ fun ToolCardCart(
                     Text(text = "удалить", fontSize = 14.sp)
                 }
             }
+
+            Column (
+                modifier = Modifier
+                    .weight(2f),
+                verticalArrangement = Arrangement.Center
+
+            ){
+                Spacer(modifier = Modifier.height(10.dp))
+                Image(
+                    painter = painterResource(id = tool.imageResId),
+                    contentDescription = tool.name,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(150.dp)
+                        .clip(MaterialTheme.shapes.medium)
+                )
+            }
+
+        }
+
     }
 }

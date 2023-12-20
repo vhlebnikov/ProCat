@@ -29,7 +29,6 @@ fun Cart(
     authViewModel: AuthViewModel = viewModel(),
     modifier: Modifier = Modifier
 ) {
-    val authUiState by authViewModel.uiState.collectAsState()
 
     Column(
         modifier = Modifier
@@ -40,11 +39,7 @@ fun Cart(
         Text(
             text = stringResource(R.string.app_name),
             style = typography.titleLarge,
-            color = if (authUiState.enteredPasswordWrong) {
-                md_theme_light_scrim
-            } else {
-                md_theme_light_tertiary
-            }
+            color = md_theme_light_scrim
         )
 
         ToolCard()
