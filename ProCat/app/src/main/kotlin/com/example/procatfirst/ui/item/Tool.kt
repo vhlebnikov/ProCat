@@ -115,7 +115,7 @@ fun BottomBar(
     ) {
         Button(
             modifier = Modifier.fillMaxWidth(),
-            onClick = { addToCart },
+            onClick = { addToCart() },
             enabled = !isAddedToCart
 
         ) {
