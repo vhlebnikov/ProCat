@@ -14,6 +14,7 @@ import com.example.procatfirst.ui.theme.ProCatFirstTheme
 
 import com.example.procatfirst.data_storage.DataCoordinator
 import com.example.procatfirst.intents.NotificationCoordinator
+import com.example.procatfirst.ui.tools.ToolsScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

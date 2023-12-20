@@ -32,6 +32,7 @@ import com.example.procatfirst.ui.cart.Cart
 import com.example.procatfirst.ui.item.ToolScreen
 import com.example.procatfirst.ui.item.ToolViewModel
 import com.example.procatfirst.ui.start.StartScreen
+import com.example.procatfirst.ui.tools.ToolsScreen
 
 
 enum class ProCatScreen(@StringRes val title: Int) {
@@ -108,6 +109,16 @@ fun ProCatApp (
             }
             composable(route = ProCatScreen.Auth.name) {
                 AuthScreen(
+                    onNextButtonClicked = {
+                        navController.navigate(ProCatScreen.Tools.name)
+                    },
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp)
+                )
+            }
+            composable(route = ProCatScreen.Tools.name) {
+                ToolsScreen(
                     onNextButtonClicked = {
                         navController.navigate(ProCatScreen.Tool.name)
                     },

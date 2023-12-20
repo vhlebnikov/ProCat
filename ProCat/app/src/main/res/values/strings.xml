@@ -3,7 +3,6 @@
     <string name="welcome">Добро пожаловать в ProCat!</string>
     <string name="logo">Логотип</string>
 
-
     <string name="back_button">Назад</string>
     <string name="next">Далее</string>
 
@@ -20,10 +19,14 @@
     <string name="tool">Инструмент</string>
     <string name="toolDescription">Описание</string>
     <string name="toolSpecifications">Характеристики</string>
+    <string name="tool_price">Цена: %d</string>
     <string name="addToCart">Добавить в корзину</string>
     <string name="addedToCart">Добавлено в корзину</string>
 
     <string name="tools">Инструменты</string>
+    <string name="search">Поиск</string>
+    <string name="filter">Фильтры</string>
+
 
     <string name="test">Тест</string>
     <string name="cart">Корзина</string>
