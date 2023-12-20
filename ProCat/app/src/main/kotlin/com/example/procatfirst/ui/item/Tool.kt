@@ -80,6 +80,10 @@ fun ToolScreen(
             text = stringResource(R.string.toolSpecifications),
             style = MaterialTheme.typography.titleMedium
         )
+        Text(
+            text = toolUiState.tool.specifications,
+            style = MaterialTheme.typography.bodyMedium
+        )
 
         BottomBar(
             addToCart = { toolViewModel.addToCart() },
