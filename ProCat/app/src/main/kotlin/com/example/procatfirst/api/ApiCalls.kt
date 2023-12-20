@@ -20,7 +20,38 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 class ApiCalls {
     companion object {
         val shared = ApiCalls()
+        const val BACKEND_URL = "http://localhost:8080"
         const val identifier = "[ApiCalls]"
+    }
+
+    fun getItems() {
+        val url = BACKEND_URL
+        val service = Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+            .create(UserService::class.java)
+
+        service.getItems().enqueue(object : Callback<ItemsResponse> {
+
+            /* The HTTP call failed. This method is run on the main thread */
+            override fun onFailure(call: Call<ItemsResponse>, t: Throwable) {
+                t.printStackTrace()
+                DataCoordinator.shared.updateUserEmail("ERROR 404")
+            }
+
+            /* The HTTP call was successful, we should still check status code and response body
+             * on a production app. This method is run on the main thread */
+            override fun onResponse(call: Call<ItemsResponse>, response: Response<ItemsResponse>) {
+                /* This will print the response of the network call to the Logcat */
+                response.body()?.results?.get(0)?.let {//~~~~
+                    DataCoordinator.shared.updateUserEmail(it.name) //~~~~
+                } //~~~~
+
+                //~~~~~~~~~~~//DataCoordinator.shared.updateUserEmail(response.body().toString())
+            }
+
+        })
     }
 
     public fun runApi(url: String)  {

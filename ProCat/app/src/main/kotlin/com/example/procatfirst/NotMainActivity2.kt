@@ -105,7 +105,10 @@ import com.example.procatfirst.ui.theme.ProCatFirstTheme
             Spacer(Modifier.size(15.dp))
 
             Button(
-                onClick = { runApi("https://randomuser.me/") },
+                onClick = {
+                    //runApi("https://randomuser.me/")
+                    ApiCalls.shared.getItems()
+                          },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.LightGray,
                     contentColor = Color.Black
@@ -132,7 +135,7 @@ import com.example.procatfirst.ui.theme.ProCatFirstTheme
     }
 
     //private fun createToast(body: String?) {
-    //    val myToast = Toast.makeText( body, Toast.LENGTH_SHORT)
+   //     val myToast = Toast.makeText( body, Toast.LENGTH_SHORT)
     //    myToast.show()
     //}
 

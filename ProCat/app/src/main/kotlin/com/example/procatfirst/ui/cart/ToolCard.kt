@@ -67,10 +67,7 @@ fun ToolCard() {
         }
         receiver1.CreateReceiver(intentToReact = SystemNotifications.delInCartIntent)
 
-        //ToolsScreenCart(tools)
-        ToolCardCart(tools[0])
-
-
+        ToolsScreenCart(tools)
 
     } else {
         Text(text = "Ваша корзина пуста", fontSize = 18.sp)

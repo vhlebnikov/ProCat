@@ -102,7 +102,7 @@ fun ToolsScreen(
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             items(tools) { tool ->
-                ToolCard(tool = tool)
+                ToolCard(tool = tool, onNextButtonClicked)
             }
         }
     }
@@ -111,14 +111,15 @@ fun ToolsScreen(
 
 @Composable
 fun ToolCard(
-    tool: Tool
+    tool: Tool,
+    onNextButtonClicked: () -> Unit,
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .clip(MaterialTheme.shapes.medium)
             .background(MaterialTheme.colorScheme.background)
-            .clickable { /* Handle click on the card if needed */ }
+            .clickable { onNextButtonClicked() }
     ) {
         Column(
             modifier = Modifier
