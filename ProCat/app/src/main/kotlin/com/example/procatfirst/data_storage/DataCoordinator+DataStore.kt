@@ -106,7 +106,7 @@ suspend fun DataCoordinator.getToolsInCartDataStore(): List<Tool> {
     val readyTools: MutableList<Tool> = emptyList<Tool>().toMutableList()
     for (i: Int in 0..<tools.size step 5) {
         val tool = Tool(tools[i].toInt(),
-            tools[i+1], tools[i+2].toInt(), tools[i+3], tools[i+4]
+            tools[i+1], tools[i+2].toInt(), tools[i+3], tools[i+4], tools[i+5].toInt()
         )
         readyTools.add(tool)
     }
@@ -125,6 +125,7 @@ suspend fun DataCoordinator.addToolInCartDataStore(value: Tool) {
     list.add(value.imageResId.toString())
     list.add(value.description)
     list.add(value.specifications)
+    list.add(value.price.toString())
     context.dataStore.edit { preferences ->
         preferences[PreferencesKeys.toolsInCart] = list
         Log.i(
