@@ -20,4 +20,7 @@ interface UserService {
     @POST("/api/login")
    // fun setUsers(@Body requestBody: RequestBody): Response<ResponseBody>
     fun setUsers(@Body requestBody: RequestBody): Call<ResponseBody>
+
+    @GET("/items")
+    fun getItems(): Call<ItemsResponse>
 }
