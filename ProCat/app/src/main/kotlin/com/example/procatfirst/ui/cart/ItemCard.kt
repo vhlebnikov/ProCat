@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -28,32 +27,24 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.procatfirst.R
 import com.example.procatfirst.data.Tool
+import com.example.procatfirst.data.ToolDataProvider
 import com.example.procatfirst.data_storage.DataCoordinator
 import com.example.procatfirst.data_storage.updateRemoveToolsInCart
 
 @Composable
 fun ToolsScreenCart(
-    tools: MutableList<Tool>,
-    modifier: Modifier = Modifier
+    tools: MutableList<Tool>
 ) {
 
-    Column (
-
-    ){
-
-        LazyColumn(
+        Column(
             modifier = Modifier
-                //.verticalScroll(rememberScrollState())
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            items(tools) { tool ->
+            for (tool in tools)
                 ToolCardCart(tool = tool)
-            }
         }
-    }
-
 }
 
 @Composable
