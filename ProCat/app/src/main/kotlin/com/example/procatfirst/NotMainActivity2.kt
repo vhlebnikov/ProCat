@@ -44,40 +44,12 @@ import com.example.procatfirst.ui.item.ToolViewModel
 import com.example.procatfirst.ui.theme.ProCatFirstTheme
 
 
-/*
-    fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initMainPageCompose()
-        initBackground()
-    }
-
-    private fun initBackground() {
-        NotificationCoordinator.shared.initialize(baseContext)
-
-        DataCoordinator.shared.initialize(
-            context = baseContext,
-            onLoad = {
-                //DataCoordinator.shared.updateUserEmail(DataCoordinator.shared.defaultUserEmailPreferenceValue)
-            }
-        )
-    } */
-
-
     private fun secondPageInit() {
         // setContentView(R.layout.right_menu)
         // super.findViewById<Button>(R.id.backButton).setOnClickListener {
        // initMainPageCompose()
         //  }
    }
-
-/*
-    private fun initMainPageCompose() {
-        setContent {
-            MyHeader()
-            TestButtons()
-        }
-
-    } */
 
 
     @Composable
