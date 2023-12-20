@@ -58,11 +58,18 @@ fun ToolCard() {
 */
     var isActive by remember { mutableStateOf(DataCoordinator.shared.toolsInCartPreferenceVariable.isNotEmpty())}
     if(isActive) {
-        val tools: MutableList<Tool> = DataCoordinator.shared.toolsInCartPreferenceVariable
+        var tools: MutableList<Tool> = DataCoordinator.shared.toolsInCartPreferenceVariable
 
         val receiver1: IntentsReceiverAbstractObject = object : IntentsReceiverAbstractObject() {
             override fun howToReactOnIntent() {
-                isActive = false
+                if(DataCoordinator.shared.toolsInCartPreferenceVariable.isEmpty()) {
+                    isActive = false
+                }
+                else {
+                    isActive = false
+                    tools = DataCoordinator.shared.toolsInCartPreferenceVariable
+                    isActive = true
+                }
             }
         }
         receiver1.CreateReceiver(intentToReact = SystemNotifications.delInCartIntent)

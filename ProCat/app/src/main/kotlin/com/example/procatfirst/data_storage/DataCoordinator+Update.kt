@@ -77,7 +77,7 @@ fun DataCoordinator.updateAddToolsInCart(value: Tool) {
 fun DataCoordinator.updateRemoveToolsInCart(value: Tool) {
     // Update Value
     //this.toolsInCartPreferenceVariable.remove(value)
-    toolsInCartPreferenceVariable = defaultToolsInCartPreferenceVariable
+    toolsInCartPreferenceVariable.remove(value)
     // Save to System
     GlobalScope.launch(Dispatchers.Default) {
         // Update DataStore
