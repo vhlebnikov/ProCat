@@ -43,6 +43,7 @@ import com.example.procatfirst.R
 import com.example.procatfirst.data.Tool
 import com.example.procatfirst.data.ToolDataProvider
 import com.example.procatfirst.ui.auth.AuthViewModel
+import com.example.procatfirst.ui.item.ToolViewModel
 import com.example.procatfirst.ui.theme.ProCatFirstTheme
 
 @Composable
@@ -90,7 +91,9 @@ fun ToolsScreen(
         }
         Button(
             onClick = { onNextButtonClicked() },
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
         ) {
             Text(stringResource(R.string.next))
         }
@@ -114,12 +117,17 @@ fun ToolCard(
     tool: Tool,
     onNextButtonClicked: () -> Unit,
 ) {
+    val toolViewModel: ToolViewModel = viewModel()
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .clip(MaterialTheme.shapes.medium)
             .background(MaterialTheme.colorScheme.background)
-            .clickable { onNextButtonClicked() }
+            .clickable {
+                toolViewModel.updateCurrentTool(tool)
+                onNextButtonClicked()
+            }
     ) {
         Column(
             modifier = Modifier

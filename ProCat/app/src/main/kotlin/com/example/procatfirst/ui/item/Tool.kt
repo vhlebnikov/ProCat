@@ -52,8 +52,8 @@ fun ToolScreen(
     ) {
 
         Image(
-            painter = painterResource(id = R.drawable.hammer),
-            contentDescription = stringResource(id = R.string.hammer),
+            painter = painterResource(id = toolUiState.tool.imageResId),
+            contentDescription = toolUiState.tool.name,
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(1.0f) // Сохраняет соотношение сторон 1:1

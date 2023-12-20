@@ -1,6 +1,7 @@
 package com.example.procatfirst.ui.item
 
 import androidx.lifecycle.ViewModel
+import com.example.procatfirst.data.Tool
 import com.example.procatfirst.data.ToolDataProvider
 import com.example.procatfirst.data_storage.DataCoordinator
 import com.example.procatfirst.data_storage.updateAddToolsInCart
@@ -15,6 +16,10 @@ class ToolViewModel: ViewModel() {
 
     init{
         openFirstTool()
+    }
+
+    fun updateCurrentTool(tool: Tool) {
+        _uiState.value = ToolUiState(tool = tool)
     }
 
     private fun openFirstTool() {
