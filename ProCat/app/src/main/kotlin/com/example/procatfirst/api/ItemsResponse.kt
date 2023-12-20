@@ -1,3 +1,5 @@
 package com.example.procatfirst.api
 
-data class ItemsResponse(val results:List<Items>)
+import com.example.procatfirst.data.Tool
+
+data class ItemsResponse(val results: List<Item>)

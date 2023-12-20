@@ -132,12 +132,11 @@ class DataCoordinator {
             identifier,
             "tools old: $toolsInCartPreferenceVariable"
         )
+        //val list = shared.toolsInCartPreferenceVariable
+
+
+        //list.remove(value)
         val list = setOf<String>().toMutableSet()
-        //list.add(value.id.toString())
-        //list.add("deleted")
-        //list.add(value.imageResId.toString())
-        //list.add(value.description)
-        //list.add(value.specifications)
         context.dataStore.edit { preferences ->
             preferences[PreferencesKeys.toolsInCart] = list
             Log.i(

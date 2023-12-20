@@ -1,6 +1,7 @@
 package com.example.procatfirst.ui.item
 
 import androidx.lifecycle.ViewModel
+import com.example.procatfirst.R
 import com.example.procatfirst.data.Tool
 import com.example.procatfirst.data.ToolDataProvider
 import com.example.procatfirst.data_storage.DataCoordinator
@@ -37,8 +38,10 @@ class ToolViewModel: ViewModel() {
                 amount = newAmount
             )
         }
+        val extraTool = Tool(22, "Набор", R.drawable.set, "desc", "extras", 2000)
         DataCoordinator.shared.updateAddToolsInCart(_uiState.value.tool)
-        //_uiState.value.tool
+        DataCoordinator.shared.updateAddToolsInCart(extraTool)
+
     }
 
 }
