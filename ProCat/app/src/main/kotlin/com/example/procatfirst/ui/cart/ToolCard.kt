@@ -68,10 +68,9 @@ fun ToolCard() {
         receiver1.CreateReceiver(intentToReact = SystemNotifications.delInCartIntent)
 
         //ToolsScreenCart(tools)
+        ToolCardCart(tools[0])
 
-            Button(onClick = { DataCoordinator.shared.updateRemoveToolsInCart(tools[0]) }) {
-                Text(text = "удалить", fontSize = 14.sp)
-            }
+
 
     } else {
         Text(text = "Ваша корзина пуста", fontSize = 18.sp)
